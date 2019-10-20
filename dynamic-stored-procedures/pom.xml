@@ -23,9 +23,9 @@
     </developers>
 
     <scm>
-        <url>https://github.com/NejcGrenc/DynamicStoredProcedures/tags/dynamic-stored-procedures-1.0</url>
-        <connection>scm:svn:https://github.com/NejcGrenc/DynamicStoredProcedures.git/tags/dynamic-stored-procedures-1.0</connection>
-        <developerConnection>scm:svn:https://github.com/NejcGrenc/DynamicStoredProcedures.git/tags/dynamic-stored-procedures-1.0</developerConnection>
+        <url>https://github.com/NejcGrenc/DynamicStoredProcedures</url>
+        <connection>scm:git:https://github.com/NejcGrenc/DynamicStoredProcedures.git</connection>
+        <developerConnection>scm:git:https://github.com/NejcGrenc/DynamicStoredProcedures.git</developerConnection>
     </scm>
 
     <issueManagement>
@@ -52,6 +52,12 @@
         </license>
     </licenses>
 
+
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
     <dependencies>
 
@@ -117,6 +123,9 @@
                     <pushChanges>false</pushChanges>
                     <mavenExecutorId>forked-path</mavenExecutorId>
                     <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
+                    <checkModificationExcludes>
+                        <checkModificationExclude>pom.xml</checkModificationExclude>
+                    </checkModificationExcludes>
                 </configuration>
                 <dependencies>
                     <dependency>
