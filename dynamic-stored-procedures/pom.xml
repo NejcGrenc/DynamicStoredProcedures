@@ -4,6 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <name>DynamicStoredProcedures</name>
+    <description>DynamicStoredProcedures code generator to assist with SpringBoot database procedure calls</description>
+
     <groupId>com.github.nejcgrenc.plugin</groupId>
     <artifactId>dynamic-stored-procedures</artifactId>
     <version>1.0.3-SNAPSHOT</version>
@@ -26,7 +28,6 @@
         <url>https://github.com/NejcGrenc/DynamicStoredProcedures</url>
         <connection>scm:git:https://github.com/NejcGrenc/DynamicStoredProcedures.git</connection>
         <developerConnection>scm:git:https://github.com/NejcGrenc/DynamicStoredProcedures.git</developerConnection>
-      <tag>dynamic-stored-procedures-1.0</tag>
   </scm>
 
     <issueManagement>
