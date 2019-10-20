@@ -1,0 +1,53 @@
+package ${packagename};
+
+import org.springframework.stereotype.Component;
+
+import javax.persistence.PersistenceContext;
+import javax.persistence.EntityManager;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureQuery;
+import javax.persistence.PersistenceException;
+
+#foreach($import in $imports)
+import $import;
+#end
+
+@Component
+public class ${className} implements ${interfaceName} {
+
+    @PersistenceContext
+    private EntityManager manager;
+
+#foreach($functionData in $functions)
+    ${functionData.functionAccess} ${functionData.functionReturnType} ${functionData.functionName}(${functionData.combinedArgumentsString()}) {
+
+    #if(${functionData.functionArguments.size()} == 0)
+    StoredProcedureQuery storedProcedure = manager.createStoredProcedureQuery("${functionData.procedureName}");
+
+    #else
+    StoredProcedureQuery storedProcedure = manager.createStoredProcedureQuery("${functionData.procedureName}")
+        #foreach($argument in $functionData.functionArguments)
+        .registerStoredProcedureParameter("${argument.argumentName}", ${argument.argumentType}.class, ParameterMode.IN)
+        #end
+        ;
+
+        storedProcedure
+        #foreach($argument in $functionData.functionArguments)
+        .setParameter("${argument.argumentName}", ${argument.fieldName})
+        #end
+        ;
+
+    #end
+
+    #if(${functionData.functionReturnType} != "void")
+    return (${functionData.functionReturnType}) storedProcedure.getSingleResult();
+    #else
+    try {
+            storedProcedure.execute();
+        } catch(PersistenceException e) {}
+    #end
+
+    }
+
+#end
+}
