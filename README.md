@@ -1,2 +1,2 @@
 # DynamicStoredProcedures
-DynamicStoredProcedures code generator,
+DynamicStoredProcedures code generator to assist with SpringBoot database procedure calls
